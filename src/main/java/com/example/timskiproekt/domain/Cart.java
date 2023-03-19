@@ -18,6 +18,12 @@ public class Cart {
 
     @OneToOne
     private User user;
+
     @ManyToMany
     private List<Product> products;
+
+    public Cart(User user, List<Product> products) {
+        this.user = user;
+        this.products = products;
+    }
 }
