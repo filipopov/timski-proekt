@@ -14,10 +14,17 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2/**")).permitAll()
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/cities/**")).permitAll()
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/categories/**")).permitAll()
+
                 )
                 .headers(headers -> headers.frameOptions().disable())
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2/**")));
+                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2/**"))
+                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/cities/**"))
+                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/categories/**"))
+
+                );
         return http.build();
     }
 }

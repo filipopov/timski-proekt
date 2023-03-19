@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,8 +15,8 @@ public class Address {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long number;
     private String name;
-    @OneToMany (mappedBy = "code")
-    private List<City> city;
 
-
+    public Address(String name) {
+        this.name = name;
+    }
 }

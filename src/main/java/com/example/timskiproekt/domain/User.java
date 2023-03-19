@@ -38,8 +38,19 @@ public class User implements UserDetails {
     @Column(name = "role")
     @Enumerated(value = EnumType.STRING)
     private Role userRole;
-    @OneToOne
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
     private Cart cart;
+
+    public User(String firstName, String lastName, String email, String password,
+                String phoneNumber, Role userRole) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.userRole = userRole;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
