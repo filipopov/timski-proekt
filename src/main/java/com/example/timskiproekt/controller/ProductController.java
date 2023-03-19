@@ -1,9 +1,14 @@
 package com.example.timskiproekt.controller;
 
+import com.example.timskiproekt.domain.Category;
+import com.example.timskiproekt.domain.Product;
 import com.example.timskiproekt.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -11,4 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 
     private final ProductService productService;
+
+    @GetMapping("/")
+    public ResponseEntity<List<Product>> getProducts(){
+        return ResponseEntity.ok(productService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id){
+        return ResponseEntity.ok(productService.findById(id));
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<Product> createProduct(@RequestParam String name,
+                                                 @RequestParam BigDecimal price,
+                                                 @RequestParam Integer quantity,
+                                                 @RequestParam Category category) {
+        return ResponseEntity.ok(this.productService.save(new Product(name, price, quantity, category)));
+    }
 }

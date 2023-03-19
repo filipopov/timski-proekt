@@ -13,6 +13,10 @@ public class City {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long code;
-    private String name;
+   private Long code;
+   private String name;
+
+   public City(String name) {
+       this.name = name;
+   }
 }
