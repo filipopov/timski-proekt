@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 @AllArgsConstructor
@@ -38,12 +39,20 @@ public class User implements UserDetails {
     @Column(name = "role")
     @Enumerated(value = EnumType.STRING)
     private Role userRole;
-
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToOne
     private Cart cart;
 
-    public User(String firstName, String lastName, String email, String password,
-                String phoneNumber, Role userRole) {
+    public User(String firstName, String lastName, String email, String password, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.userRole = Role.USER;
+    }
+
+    public User(String firstName, String lastName, String email,
+                String password, String phoneNumber,  Role userRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -52,9 +61,14 @@ public class User implements UserDetails {
         this.userRole = userRole;
     }
 
+    private boolean isAccountNonExpired = true;
+    private boolean isAccountNonLocked = true;
+    private boolean isCredentialsNonExpire = true;
+    private boolean isEnabled = true;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singletonList(userRole);
     }
 
     @Override
@@ -64,21 +78,21 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return isAccountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return isAccountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return isCredentialsNonExpire;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return isEnabled;
     }
 }
