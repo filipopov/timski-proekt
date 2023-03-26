@@ -27,16 +27,4 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         return ResponseEntity.ok(userService.findById(id));
     }
-
-    @PostMapping("/registerUser")
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<String> createUser(@RequestParam String firstName,
-                                           @RequestParam String lastName,
-                                           @RequestParam String email,
-                                           @RequestParam String password,
-                                           @RequestParam String phoneNumber,
-                                           @RequestParam Role userRole) {
-        userService.save(new User(firstName, lastName, email, password, phoneNumber, userRole));
-        return ResponseEntity.status(HttpStatus.CREATED).body("User has been created");
-    }
 }
