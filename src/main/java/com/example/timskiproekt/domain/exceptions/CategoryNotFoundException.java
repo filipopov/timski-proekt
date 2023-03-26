@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class CategoryNotFoundException extends RuntimeException{
 
-    CategoryNotFoundException() {
+    public CategoryNotFoundException() {
         super("Category not found");
     }
 }

@@ -42,6 +42,25 @@ public class User implements UserDetails {
     @OneToOne
     private Cart cart;
 
+    public User(String firstName, String lastName, String email, String password, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.userRole = Role.USER;
+    }
+
+    public User(String firstName, String lastName, String email,
+                String password, String phoneNumber,  Role userRole) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.userRole = userRole;
+    }
+
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
     private boolean isCredentialsNonExpire = true;
