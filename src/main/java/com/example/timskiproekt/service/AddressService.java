@@ -1,8 +1,7 @@
 package com.example.timskiproekt.service;
 
 import com.example.timskiproekt.domain.Address;
-import com.example.timskiproekt.domain.User;
-import com.example.timskiproekt.domain.enumerations.Role;
+import com.example.timskiproekt.domain.dto.AddressDto;
 
 import java.util.List;
 
@@ -14,5 +13,10 @@ public interface AddressService {
 
     List<Address> findAll();
 
-    User register(String us, String pw, String repeatPw, String name, String surname, Role role);
+    void updateAddress(Long id, AddressDto addressDto);
+
+    void deleteAddress(Long id);
+
+    void deleteAll();
+
 }

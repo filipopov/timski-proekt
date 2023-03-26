@@ -1,9 +1,12 @@
 package com.example.timskiproekt.service.impl;
 
 import com.example.timskiproekt.domain.Address;
-import com.example.timskiproekt.domain.User;
-import com.example.timskiproekt.domain.enumerations.Role;
+import com.example.timskiproekt.domain.City;
+import com.example.timskiproekt.domain.dto.AddressDto;
+import com.example.timskiproekt.domain.exceptions.AddressNotFoundException;
+import com.example.timskiproekt.domain.exceptions.CityNotFoundException;
 import com.example.timskiproekt.repository.AddressRepository;
+import com.example.timskiproekt.repository.CityRepository;
 import com.example.timskiproekt.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +18,7 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository addressRepository;
-
+    private final CityRepository cityRepository;
     @Override
     public Address save(Address address) {
         return this.addressRepository.save(address);
@@ -32,7 +35,24 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public User register(String us, String pw, String repeatPw, String name, String surname, Role role) {
-        return null;
+    public void updateAddress(Long id, AddressDto addressDto) {
+        Address address = addressRepository.findById(id)
+                .orElseThrow(AddressNotFoundException::new);
+        City city = cityRepository.findByName(addressDto.getCity())
+                .orElseThrow(CityNotFoundException::new);
+        address.setCities(List.of(city));
+
+        addressRepository.save(address);
     }
+
+    @Override
+    public void deleteAddress(Long id) {
+        addressRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        addressRepository.deleteAll();
+    }
+
 }
