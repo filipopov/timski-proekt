@@ -25,6 +25,7 @@ public record InitialDataHolder(AddressService addressService,
         cityService.saveAll(List.of(bt, sk, be));
 
         Address address = new Address("Partizanska");
+        address.setCities(List.of(bt));
 
         addressService.save(address);
 
@@ -41,7 +42,7 @@ public record InitialDataHolder(AddressService addressService,
         productService.saveAll(List.of(product1, product2, product3));
 
         User user = new User("Filip", "Popov", "filip.popov13@gmail.com",
-                "password", "123456789", Role.ADMIN);
+                "password", "123456789", Role.ADMIN, address);
 
         userService.save(user);
     }

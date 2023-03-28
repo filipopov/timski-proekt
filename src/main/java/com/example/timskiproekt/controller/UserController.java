@@ -1,6 +1,8 @@
 package com.example.timskiproekt.controller;
 
 import com.example.timskiproekt.domain.User;
+import com.example.timskiproekt.domain.dto.AddressDto;
+import com.example.timskiproekt.domain.dto.UserDto;
 import com.example.timskiproekt.domain.enumerations.Role;
 import com.example.timskiproekt.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +28,24 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         return ResponseEntity.ok(userService.findById(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateUser(@PathVariable Long id,
+                                           @RequestParam UserDto userDto){
+        userService.updateUser(id, userDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/")
+    public ResponseEntity<Void> deleteAll(){
+        userService.deleteAll();
+        return ResponseEntity.ok().build();
     }
 }

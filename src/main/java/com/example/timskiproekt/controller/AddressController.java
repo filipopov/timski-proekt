@@ -1,6 +1,7 @@
 package com.example.timskiproekt.controller;
 
 import com.example.timskiproekt.domain.Address;
+import com.example.timskiproekt.domain.dto.AddressDto;
 import com.example.timskiproekt.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,24 @@ public class AddressController {
     @PostMapping("/")
     public ResponseEntity<Address> createCity(@RequestParam String name) {
         return ResponseEntity.ok(this.addressService.save(new Address(name)));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateAddress(@PathVariable Long id,
+                                              @RequestParam AddressDto addressDto){
+        addressService.updateAddress(id, addressDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAddress(@PathVariable Long id){
+        addressService.deleteAddress(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/")
+    public ResponseEntity<Void> deleteAll(){
+        addressService.deleteAll();
+        return ResponseEntity.ok().build();
     }
 }

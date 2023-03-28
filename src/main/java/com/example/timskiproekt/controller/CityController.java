@@ -29,4 +29,16 @@ public class CityController {
     public ResponseEntity<City> createCity(@RequestParam String name) {
         return ResponseEntity.ok(this.cityService.save(new City(name)));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCity(@PathVariable Long id){
+        cityService.deleteCity(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/")
+    public ResponseEntity<Void> deleteAll(){
+        cityService.deleteAll();
+        return ResponseEntity.ok().build();
+    }
 }

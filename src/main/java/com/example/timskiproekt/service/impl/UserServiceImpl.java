@@ -1,6 +1,7 @@
 package com.example.timskiproekt.service.impl;
 
 import com.example.timskiproekt.domain.User;
+import com.example.timskiproekt.domain.dto.UserDto;
 import com.example.timskiproekt.domain.enumerations.Role;
 import com.example.timskiproekt.domain.exceptions.InvalidArgumentsException;
 import com.example.timskiproekt.domain.exceptions.PasswordsDoNotMatchException;
@@ -56,5 +57,27 @@ public class UserServiceImpl implements UserService {
 
         User user = new User(firstName, lastName, email, passwordEncoder.encode(password), phoneNumber);
         return userRepository.save(user);
+    }
+
+    @Override
+    public void updateUser(Long id, UserDto userDto) {
+        User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setEmail(userDto.getEmail());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+
+        userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        userRepository.deleteAll();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.timskiproekt.service;
 
 import com.example.timskiproekt.domain.User;
+import com.example.timskiproekt.domain.dto.UserDto;
 import com.example.timskiproekt.domain.enumerations.Role;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -16,4 +17,10 @@ public interface UserService extends UserDetailsService {
 
     User register(String email, String password, String repeatPassword, String firstName,
                   String lastName, String phoneNumber, Role role);
+
+    void updateUser(Long id, UserDto userDto);
+
+    void deleteUser(Long id);
+
+    void deleteAll();
 }

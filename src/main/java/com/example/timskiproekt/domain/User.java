@@ -42,6 +42,9 @@ public class User implements UserDetails {
     @OneToOne
     private Cart cart;
 
+    @OneToOne
+    private Address address;
+
     public User(String firstName, String lastName, String email, String password, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -52,13 +55,14 @@ public class User implements UserDetails {
     }
 
     public User(String firstName, String lastName, String email,
-                String password, String phoneNumber,  Role userRole) {
+                String password, String phoneNumber,  Role userRole, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.userRole = userRole;
+        this.address = address;
     }
 
     private boolean isAccountNonExpired = true;

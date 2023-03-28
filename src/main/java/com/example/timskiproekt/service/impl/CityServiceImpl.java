@@ -33,4 +33,14 @@ public class CityServiceImpl implements CityService {
     public List<City> findAll() {
         return this.cityRepository.findAll();
     }
+
+    @Override
+    public void deleteCity(Long id) {
+        cityRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        cityRepository.deleteAll();;
+    }
 }
