@@ -1,12 +1,9 @@
 package com.example.timskiproekt.service.impl;
 
 import com.example.timskiproekt.domain.Address;
-import com.example.timskiproekt.domain.City;
 import com.example.timskiproekt.domain.dto.AddressDto;
 import com.example.timskiproekt.domain.exceptions.AddressNotFoundException;
-import com.example.timskiproekt.domain.exceptions.CityNotFoundException;
 import com.example.timskiproekt.repository.AddressRepository;
-import com.example.timskiproekt.repository.CityRepository;
 import com.example.timskiproekt.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,10 +15,14 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository addressRepository;
-    private final CityRepository cityRepository;
     @Override
     public Address save(Address address) {
         return this.addressRepository.save(address);
+    }
+
+    @Override
+    public List<Address> saveAll(List<Address> addresses) {
+        return addressRepository.saveAll(addresses);
     }
 
     @Override
@@ -38,9 +39,8 @@ public class AddressServiceImpl implements AddressService {
     public void updateAddress(Long id, AddressDto addressDto) {
         Address address = addressRepository.findById(id)
                 .orElseThrow(AddressNotFoundException::new);
-        City city = cityRepository.findByName(addressDto.getCity())
-                .orElseThrow(CityNotFoundException::new);
-        address.setCities(List.of(city));
+        address.setStreet(addressDto.getStreet());
+        address.setCity(addressDto.getCity());
 
         addressRepository.save(address);
     }

@@ -1,11 +1,12 @@
 package com.example.timskiproekt.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -15,13 +16,13 @@ public class Address {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long number;
-    private String name;
+    private Long id;
+    private String street;
+    private String city;
 
-    @OneToMany
-    private List<City> cities;
 
-    public Address(String name) {
-        this.name = name;
+    public Address(String street, String city) {
+        this.street = street;
+        this.city = city;
     }
 }

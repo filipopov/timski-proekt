@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> saveAll(List<User> users) {
+        return userRepository.saveAll(users);
+    }
+
+    @Override
     public User findById(Long id) {
         return this.userRepository.findById(id).orElseThrow(RuntimeException::new);
     }
