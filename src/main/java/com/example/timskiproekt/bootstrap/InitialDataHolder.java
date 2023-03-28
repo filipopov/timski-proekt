@@ -12,22 +12,17 @@ import java.util.List;
 @Component
 public record InitialDataHolder(AddressService addressService,
                                 CategoryService categoryService,
-                                CityService cityService,
                                 ProductService productService,
                                 UserService userService) {
 
     @PostConstruct
     public void init() {
-        City bt = new City("Bitola");
-        City sk = new City("Skopje");
-        City be = new City("Berovo");
 
-        cityService.saveAll(List.of(bt, sk, be));
+        Address address1 = new Address("Partizanska", "Bitola");
+        Address address2 = new Address("Partizanska", "Berovo");
+        Address address3 = new Address("Partizanska", "Skopje");
 
-        Address address = new Address("Partizanska");
-        address.setCities(List.of(bt));
-
-        addressService.save(address);
+        addressService.saveAll(List.of(address1, address2, address3));
 
         Category category1 = new Category("Sok");
         Category category2 = new Category("Slatko");
@@ -41,9 +36,16 @@ public record InitialDataHolder(AddressService addressService,
 
         productService.saveAll(List.of(product1, product2, product3));
 
-        User user = new User("Filip", "Popov", "filip.popov13@gmail.com",
-                "password", "123456789", Role.ADMIN, address);
+        User user1 = new User("Filip", "Popov", "filip.popov13@gmail.com",
+                "password", "123456789", Role.ADMIN, address1);
 
-        userService.save(user);
+        User user2 = new User("Natalija", "Chitinska", "natalija.chitinska@gmail.com",
+                "password", "123456789", Role.USER, address2);
+
+        User user3 = new User("Marija", "Pavlovska", "marija.pavlovska@gmail.com",
+                "password", "123456789", Role.USER, address3);
+
+
+        userService.saveAll(List.of(user1, user2, user3));
     }
 }

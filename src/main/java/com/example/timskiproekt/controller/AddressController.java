@@ -27,8 +27,8 @@ public class AddressController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Address> createCity(@RequestParam String name) {
-        return ResponseEntity.ok(this.addressService.save(new Address(name)));
+    public ResponseEntity<Address> createAddress(@RequestParam String name, String city) {
+        return ResponseEntity.ok(this.addressService.save(new Address(name, city)));
     }
 
     @PutMapping("/{id}")
