@@ -38,15 +38,14 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2/**")).permitAll()
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/cities/**")).permitAll()
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/api/**")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/categories/**")).permitAll()
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/api")).permitAll()
 
                 )
                 .headers(headers -> headers.frameOptions().disable())
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2/**"))
-                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/cities/**"))
+                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/api/**"))
                         .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/categories/**"))
 
                 );
