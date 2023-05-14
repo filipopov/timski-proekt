@@ -35,12 +35,10 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2/**")).permitAll()
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/cities/**")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/categories/**")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/register/**")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/products/**")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/login")).permitAll()
-
                 )
                 .headers(headers -> headers.frameOptions().disable())
                 .csrf(
@@ -48,8 +46,8 @@ public class WebSecurityConfig {
 //                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/cities/**"))
 //                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/categories/**"))
 //                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/register/**"))
-
-
+          
+          
                 ).disable();
         http.authenticationProvider(customEmailPasswordAuthenticationProvider);
         return http.build();
