@@ -1,6 +1,5 @@
 package com.example.timskiproekt.controller;
 
-import com.example.timskiproekt.domain.enumerations.Role;
 import com.example.timskiproekt.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +18,10 @@ public class RegisterController {
                                        @RequestParam String email,
                                        @RequestParam String password,
                                        @RequestParam String repeatPassword,
-                                       @RequestParam String phoneNumber) {
-        userService.register(email, password, repeatPassword, firstName, lastName, phoneNumber, Role.USER);
+                                       @RequestParam String username,
+                                       @RequestParam String phoneNumber,
+                                       @RequestParam String address) {
+        userService.register(email, password, repeatPassword, firstName, lastName, username, phoneNumber, address);
         return ResponseEntity.ok().build();
     }
 }
