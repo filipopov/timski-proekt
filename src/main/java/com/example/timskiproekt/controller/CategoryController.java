@@ -1,7 +1,6 @@
 package com.example.timskiproekt.controller;
 
 import com.example.timskiproekt.domain.Category;
-import com.example.timskiproekt.domain.dto.AddressDto;
 import com.example.timskiproekt.domain.dto.CategoryDto;
 import com.example.timskiproekt.service.CategoryService;
 import lombok.RequiredArgsConstructor;

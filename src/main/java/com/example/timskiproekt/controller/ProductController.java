@@ -2,7 +2,6 @@ package com.example.timskiproekt.controller;
 
 import com.example.timskiproekt.domain.Category;
 import com.example.timskiproekt.domain.Product;
-import com.example.timskiproekt.domain.dto.AddressDto;
 import com.example.timskiproekt.domain.dto.ProductDto;
 import com.example.timskiproekt.service.ProductService;
 import lombok.RequiredArgsConstructor;
