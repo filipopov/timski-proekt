@@ -7,7 +7,6 @@ import com.example.timskiproekt.domain.exceptions.CategoryNotFoundException;
 import com.example.timskiproekt.repository.CategoryRepository;
 import com.example.timskiproekt.service.CategoryService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

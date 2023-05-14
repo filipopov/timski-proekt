@@ -10,19 +10,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Component
-public record InitialDataHolder(AddressService addressService,
-                                CategoryService categoryService,
+public record InitialDataHolder(CategoryService categoryService,
                                 ProductService productService,
                                 UserService userService) {
 
     @PostConstruct
     public void init() {
-
-        Address address1 = new Address("Partizanska", "Bitola");
-        Address address2 = new Address("Partizanska", "Berovo");
-        Address address3 = new Address("Partizanska", "Skopje");
-
-        addressService.saveAll(List.of(address1, address2, address3));
 
         Category category1 = new Category("Sok");
         Category category2 = new Category("Slatko");
@@ -36,16 +29,12 @@ public record InitialDataHolder(AddressService addressService,
 
         productService.saveAll(List.of(product1, product2, product3));
 
-        User user1 = new User("Filip", "Popov", "filip.popov13@gmail.com",
-                "password", "123456789", Role.ADMIN, address1);
+        User user1 = new User("Filip", "Popov", "fpopov@gmail.com",
+                "fpopov", "pass", "123456789", Role.ADMIN, "address1");
 
-        User user2 = new User("Natalija", "Chitinska", "natalija.chitinska@gmail.com",
-                "password", "123456789", Role.USER, address2);
+        User user2 = new User("Natalija", "Chitinska", "ncitinska@gmail.com","nc",
+                "pass", "123456789", "address1");
 
-        User user3 = new User("Marija", "Pavlovska", "marija.pavlovska@gmail.com",
-                "password", "123456789", Role.USER, address3);
-
-
-        userService.saveAll(List.of(user1, user2, user3));
+        userService.saveAll(List.of(user1, user2));
     }
 }
