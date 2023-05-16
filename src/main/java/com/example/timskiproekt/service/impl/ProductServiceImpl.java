@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.findById(id)
                 .orElseThrow(ProductNotFoundException::new);
         List<Category> categories = categoryRepository.findAll();
-        if ((productDto.getPrice().compareTo(BigDecimal.valueOf(0))) == 1)
+        if (productDto.getPrice().intValue() < 0)
             throw new InvalidPriceException();
         if (productDto.getQuantity() < 0)
             throw new InvalidQuantityException();
