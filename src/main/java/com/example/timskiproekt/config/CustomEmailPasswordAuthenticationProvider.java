@@ -1,7 +1,6 @@
 package com.example.timskiproekt.config;
 
 import com.example.timskiproekt.domain.exceptions.BadCredentialsException;
-import com.example.timskiproekt.domain.exceptions.InvalidArgumentsException;
 import com.example.timskiproekt.service.UserService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

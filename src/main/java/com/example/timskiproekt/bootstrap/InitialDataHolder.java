@@ -4,6 +4,7 @@ import com.example.timskiproekt.domain.*;
 import com.example.timskiproekt.domain.enumerations.Role;
 import com.example.timskiproekt.service.*;
 import jakarta.annotation.PostConstruct;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -12,7 +13,8 @@ import java.util.List;
 @Component
 public record InitialDataHolder(CategoryService categoryService,
                                 ProductService productService,
-                                UserService userService) {
+                                UserService userService,
+                                PasswordEncoder passwordEncoder) {
 
     @PostConstruct
     public void init() {
@@ -30,10 +32,10 @@ public record InitialDataHolder(CategoryService categoryService,
         productService.saveAll(List.of(product1, product2, product3));
 
         User user1 = new User("Filip", "Popov", "fpopov@gmail.com",
-                "fpopov", "pass", "123456789", Role.ADMIN, "address1");
+                "fpopov", passwordEncoder.encode("pass"), "123456789", Role.ADMIN, "address1");
 
         User user2 = new User("Natalija", "Chitinska", "ncitinska@gmail.com","nc",
-                "pass", "123456789", "address1");
+                passwordEncoder.encode("pass"), "123456789", "address1");
 
         userService.saveAll(List.of(user1, user2));
     }

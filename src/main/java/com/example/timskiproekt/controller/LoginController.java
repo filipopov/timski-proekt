@@ -1,33 +1,27 @@
 package com.example.timskiproekt.controller;
 
 import com.example.timskiproekt.domain.User;
-import com.example.timskiproekt.service.UserService;
+import com.example.timskiproekt.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Controller;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
-@Controller
-@RequestMapping("/login")
+@RestController
 public class LoginController {
 
+    private final AuthService authService;
 
-    private final UserService userService;
+    @PostMapping("/login")
+    public ResponseEntity<?> login(HttpServletRequest request, Model model){
 
-    @PostMapping
-    public String login(HttpServletRequest request, @RequestParam String username, @RequestParam String password){
-        User user;
-        try{
-            user = this.userService.login(username, password);
-            request.getSession().setAttribute("user", user);
-            return user.getUsername();
-        }
-        catch (RuntimeException exception){
-            return exception.getMessage();
-        }
+        User user = this.authService.login(request.getParameter("username"), request.getParameter("password"));
+        request.getSession().setAttribute("user", user);
+        model.addAttribute("user", user);
+        return ResponseEntity.ok().body("success");
+
     }
 }
