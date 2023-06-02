@@ -1,20 +1,20 @@
 package com.example.timskiproekt.domain;
 
+import com.example.timskiproekt.domain.annotation.ValidPhone;
 import com.example.timskiproekt.domain.enumerations.Role;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.Collections;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
+@Builder
 @Table(name = "shop_users")
-public class User implements UserDetails {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,6 +29,7 @@ public class User implements UserDetails {
 
     private String password;
 
+    @ValidPhone
     private String phoneNumber;
 
     @Enumerated(value = EnumType.STRING)
@@ -62,40 +63,5 @@ public class User implements UserDetails {
         this.phoneNumber = phoneNumber;
         this.userRole = userRole;
         this.address = address;
-    }
-
-    private boolean isAccountNonExpired = true;
-    private boolean isAccountNonLocked = true;
-    private boolean isCredentialsNonExpire = true;
-    private boolean isEnabled = true;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(userRole);
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpire;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return isEnabled;
     }
 }
