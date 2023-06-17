@@ -32,10 +32,10 @@ public record InitialDataHolder(CategoryService categoryService,
         productService.saveAll(List.of(product1, product2, product3));
 
         User user1 = new User("Filip", "Popov", "fpopov@gmail.com",
-                "fpopov", passwordEncoder.encode("pass"), "123456789", Role.ADMIN, "address1");
+                "fpopov", passwordEncoder.encode("pass"), "075 123 123", Role.ADMIN, "address1");
 
         User user2 = new User("Natalija", "Chitinska", "ncitinska@gmail.com","nc",
-                passwordEncoder.encode("pass"), "123456789", "address1");
+                passwordEncoder.encode("pass"), "075 123 123", "address1");
 
         userService.saveAll(List.of(user1, user2));
     }

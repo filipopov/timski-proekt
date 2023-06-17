@@ -29,7 +29,6 @@ public class User {
 
     private String password;
 
-    @ValidPhone
     private String phoneNumber;
 
     @Enumerated(value = EnumType.STRING)
