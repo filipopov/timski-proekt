@@ -1,6 +1,5 @@
 package com.example.timskiproekt.domain;
 
-import com.example.timskiproekt.domain.annotation.ValidPhone;
 import com.example.timskiproekt.domain.enumerations.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
