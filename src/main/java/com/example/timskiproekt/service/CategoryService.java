@@ -8,6 +8,7 @@ import java.util.List;
 public interface CategoryService {
 
     Category save(Category category);
+    Category create(String name);
 
     List<Category> saveAll(List<Category> categories);
 
@@ -20,4 +21,6 @@ public interface CategoryService {
     void deleteCategory(Long id);
 
     void deleteAll();
+
+    List<Category> searchCategories(String searchText);
 }

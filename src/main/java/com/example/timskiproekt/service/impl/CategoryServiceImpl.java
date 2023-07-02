@@ -4,6 +4,7 @@ import com.example.timskiproekt.domain.Category;
 import com.example.timskiproekt.domain.dto.CategoryDto;
 import com.example.timskiproekt.domain.exceptions.CategoryAlreadyExistsException;
 import com.example.timskiproekt.domain.exceptions.CategoryNotFoundException;
+import com.example.timskiproekt.domain.exceptions.InvalidArgumentsException;
 import com.example.timskiproekt.repository.CategoryRepository;
 import com.example.timskiproekt.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,15 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category save(Category category) {
         return this.categoryRepository.save(category);
+    }
+
+    @Override
+    public Category create(String name) {
+        if (name == null || name.isEmpty())
+            throw new InvalidArgumentsException();
+        Category category = new Category(name);
+        categoryRepository.save(category);
+        return category;
     }
 
     @Override
@@ -62,5 +72,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void deleteAll() {
         categoryRepository.deleteAll();
+    }
+
+    @Override
+    public List<Category> searchCategories(String searchText) {
+        return categoryRepository.findAllByNameLike(searchText);
     }
 }

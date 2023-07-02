@@ -4,6 +4,7 @@ import com.example.timskiproekt.domain.Category;
 import com.example.timskiproekt.domain.dto.CategoryDto;
 import com.example.timskiproekt.domain.exceptions.CategoryAlreadyExistsException;
 import com.example.timskiproekt.domain.exceptions.CategoryNotFoundException;
+import com.example.timskiproekt.domain.exceptions.InvalidArgumentsException;
 import com.example.timskiproekt.repository.CategoryRepository;
 import com.example.timskiproekt.service.impl.CategoryServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -65,6 +66,28 @@ public class CategoryIT {
         // Verify the result
         assertEquals(categories, savedCategories);
         verify(categoryRepository, times(1)).saveAll(categories);
+    }
+    @Test
+    public void createCategory() {
+        String name = "category";
+        when(categoryService.save(new Category(name))).thenReturn(any(Category.class));
+
+        Category newCategory = categoryService.create(name);
+
+        assertEquals(newCategory.getName(), "category");
+    }
+    @Test
+    public void testCreateCategoryWithNullShouldThrowException() {
+
+        assertThrows(InvalidArgumentsException.class, () ->
+                categoryService.create(null));
+    }
+
+    @Test
+    public void testCreateCategoryWithEmptyNameShouldThrowException() {
+
+        assertThrows(InvalidArgumentsException.class, () ->
+                categoryService.create(""));
     }
 
     @Test

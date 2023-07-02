@@ -19,7 +19,7 @@ public class Cart {
     @OneToOne
     private User user;
 
-    @OneToMany
+    @ManyToMany
     private List<Product> products;
 
     public Cart(User user, List<Product> products) {
