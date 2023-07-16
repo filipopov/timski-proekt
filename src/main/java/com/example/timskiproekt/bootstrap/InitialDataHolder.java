@@ -18,7 +18,7 @@ public record InitialDataHolder(CategoryService categoryService,
 
     @PostConstruct
     public void init() {
-//
+
         Category category1 = new Category("Sok");
         Category category2 = new Category("Slatko");
         Category category3 = new Category("Tinkturi");
