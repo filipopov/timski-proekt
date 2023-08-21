@@ -48,24 +48,24 @@ const ManageUser: FC = (): ReactElement => {
                 <Spinner />
             ) : (
                 <>
-                    <ContentTitle title={`User: ${firstName} ${lastName}`} titleLevel={4} icon={<UserOutlined />} />
+                    <ContentTitle title={`Корисник: ${firstName} ${lastName}`} titleLevel={4} icon={<UserOutlined />} />
                     <Row>
                         <Col span={24}>
                             <Card>
                                 <Row gutter={24}>
                                     <Col span={12}>
-                                        <AccountDataItem title={"User id"} text={id} />
-                                        <AccountDataItem title={"Email"} text={email} />
-                                        <AccountDataItem title={"Role"} text={roles} />
-                                        <AccountDataItem title={"First name"} text={firstName} />
-                                        <AccountDataItem title={"Last name"} text={lastName} />
+                                        <AccountDataItem title={"ИД"} text={id} />
+                                        <AccountDataItem title={"Е-мејл"} text={email} />
+                                        <AccountDataItem title={"Улога"} text={roles} />
+                                        <AccountDataItem title={"Име"} text={firstName} />
+                                        <AccountDataItem title={"Презиме"} text={lastName} />
                                     </Col>
                                     <Col span={8}>
-                                        <AccountDataItem title={"Provider"} text={provider} />
-                                        <AccountDataItem title={"City"} text={city} />
-                                        <AccountDataItem title={"Address"} text={address} />
-                                        <AccountDataItem title={"Phone number"} text={phoneNumber} />
-                                        <AccountDataItem title={"Post index"} text={postIndex} />
+                                        <AccountDataItem title={"Провајдер"} text={provider} />
+                                        <AccountDataItem title={"Град"} text={city} />
+                                        <AccountDataItem title={"Адреса"} text={address} />
+                                        <AccountDataItem title={"Број"} text={phoneNumber} />
+                                        <AccountDataItem title={"Поштенски број"} text={postIndex} />
                                     </Col>
                                 </Row>
                             </Card>
@@ -73,12 +73,12 @@ const ManageUser: FC = (): ReactElement => {
                                 <Col span={24}>
                                     {userOrders.length === 0 ? (
                                         <div style={{ textAlign: "center" }}>
-                                            <ContentTitle title={"No orders"} titleLevel={4} />
+                                            <ContentTitle title={"Сеуште нема порачки"} titleLevel={4} />
                                         </div>
                                     ) : (
                                         <>
                                             <div style={{ textAlign: "center" }}>
-                                                <ContentTitle title={"Orders"} titleLevel={4} />
+                                                <ContentTitle title={"Порачки"} titleLevel={4} />
                                             </div>
                                             <Table
                                                 rowKey={"id"}
@@ -90,38 +90,38 @@ const ManageUser: FC = (): ReactElement => {
                                                 dataSource={userOrders}
                                                 columns={[
                                                     {
-                                                        title: "Order №",
+                                                        title: "ИД",
                                                         dataIndex: "id",
                                                         key: "id"
                                                     },
                                                     {
-                                                        title: "Date",
+                                                        title: "Дата",
                                                         dataIndex: "date",
                                                         key: "date"
                                                     },
                                                     {
-                                                        title: "City",
+                                                        title: "Град",
                                                         dataIndex: "city",
                                                         key: "city"
                                                     },
                                                     {
-                                                        title: "Address",
+                                                        title: "Адреса",
                                                         dataIndex: "address",
                                                         key: "address"
                                                     },
                                                     {
-                                                        title: "Post index",
+                                                        title: "Поштенски број",
                                                         dataIndex: "postIndex",
                                                         key: "postIndex"
                                                     },
                                                     {
-                                                        title: "Order Summary",
+                                                        title: "Вкупно",
                                                         dataIndex: "totalPrice",
                                                         key: "totalPrice",
-                                                        render: (_, order: OrderResponse) => `${order.totalPrice}.0 $`
+                                                        render: (_, order: OrderResponse) => `${order.totalPrice}.0 МКД`
                                                     },
                                                     {
-                                                        title: "Actions",
+                                                        title: "Акции",
                                                         dataIndex: "actions",
                                                         key: "actions",
                                                         render: (_, order: OrderResponse) => (

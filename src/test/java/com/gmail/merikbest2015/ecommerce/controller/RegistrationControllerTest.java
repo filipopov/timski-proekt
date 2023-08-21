@@ -48,7 +48,6 @@ public class RegistrationControllerTest {
         registrationRequest.setPassword2(USER_PASSWORD);
         registrationRequest.setFirstName(FIRST_NAME);
         registrationRequest.setLastName(LAST_NAME);
-        registrationRequest.setCaptcha("12345");
     }
 
     @Test
@@ -82,7 +81,6 @@ public class RegistrationControllerTest {
         registrationRequest.setPassword2(USER_PASSWORD);
         registrationRequest.setFirstName(FIRST_NAME);
         registrationRequest.setLastName(LAST_NAME);
-        registrationRequest.setCaptcha("12345");
 
         mockMvc.perform(post(API_V1_REGISTRATION)
                         .content(mapper.writeValueAsString(registrationRequest))
@@ -93,7 +91,6 @@ public class RegistrationControllerTest {
 
     @Test
     public void registration_ShouldCaptchaNotFilled() throws Exception {
-        registrationRequest.setCaptcha(null);
 
         mockMvc.perform(post(API_V1_REGISTRATION)
                         .content(mapper.writeValueAsString(registrationRequest))

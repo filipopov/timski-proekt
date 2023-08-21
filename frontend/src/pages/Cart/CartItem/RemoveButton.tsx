@@ -11,7 +11,7 @@ const RemoveButton: FC<PropsType> = memo(({ perfumeId, deleteFromCart }): ReactE
 
     return (
         <Button onClick={() => deleteFromCart(perfumeId)} icon={<CloseOutlined />}>
-            Remove
+            Избриши
         </Button>
     );
 });

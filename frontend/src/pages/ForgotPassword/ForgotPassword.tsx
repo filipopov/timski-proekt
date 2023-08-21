@@ -37,26 +37,26 @@ const ForgotPassword: FC = (): ReactElement => {
 
     return (
         <ContentWrapper>
-            <ContentTitle icon={<KeyOutlined />} title={"FORGOT PASSWORD ?"} />
+            <ContentTitle icon={<KeyOutlined />} title={"ЗАБОРАВЕНА ЛОЗИНКА ?"} />
             <Row gutter={32}>
                 <Col span={12}>
                     <Form form={form} onFinish={onClickSend}>
                         <Divider />
                         <Typography.Text style={{ display: "block", marginBottom: 16 }}>
-                            Enter your email address that you used to create your account.
+                            Внесете ја Вашата Е-мејл адреса со која го креиравте профилот.
                         </Typography.Text>
                         {error && <Alert type="error" message={error} />}
                         {success && <Alert type="success" message={success} />}
                         <FormInput
-                            title={"E-mail:"}
+                            title={"Е-мејл:"}
                             icon={<MailOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
                             name={"email"}
                             placeholder={"E-mail"}
-                            rule={[{ required: true, message: "Please input your E-mail!" }]}
+                            rule={[{ required: true, message: "Ве молиме внесете E-мејл адреса!" }]}
                         />
-                        <IconButton disabled={isLoading} title={"Send"} icon={<SendOutlined />} />
+                        <IconButton disabled={isLoading} title={"Испрати"} icon={<SendOutlined />} />
                     </Form>
                 </Col>
             </Row>

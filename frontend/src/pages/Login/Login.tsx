@@ -44,7 +44,7 @@ const Login: FC = (): ReactElement => {
 
     return (
         <ContentWrapper>
-            <ContentTitle icon={<LoginOutlined />} title={"SIGN IN"} />
+            <ContentTitle icon={<LoginOutlined />} title={"НАЈАВИ СЕ"} />
             <Row gutter={32}>
                 <Col span={12}>
                     <Form onFinish={onClickSignIn}>
@@ -52,7 +52,7 @@ const Login: FC = (): ReactElement => {
                         {errorMessage && <Alert type="error" message={errorMessage} />}
                         {successMessage && <Alert type="success" message={successMessage} />}
                         <FormInput
-                            title={"E-mail:"}
+                            title={"E-мејл:"}
                             icon={<MailOutlined />}
                             titleSpan={6}
                             wrapperSpan={18}
@@ -60,7 +60,7 @@ const Login: FC = (): ReactElement => {
                             placeholder={"E-mail"}
                         />
                         <FormInput
-                            title={"Password:"}
+                            title={"Лозинка:"}
                             icon={<LockOutlined />}
                             titleSpan={6}
                             wrapperSpan={18}
@@ -69,8 +69,8 @@ const Login: FC = (): ReactElement => {
                             inputPassword
                         />
                         <Space align={"baseline"} size={13}>
-                            <IconButton title={"Sign in"} icon={<LoginOutlined />} />
-                            <Link to={FORGOT}>Forgot password?</Link>
+                            <IconButton title={"Најави се"} icon={<LoginOutlined />} />
+                            <Link to={FORGOT}>Заборавена лозинка?</Link>
                         </Space>
                     </Form>
                 </Col>

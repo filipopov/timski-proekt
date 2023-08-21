@@ -45,13 +45,13 @@ const Registration: FC = (): ReactElement => {
 
     return (
         <ContentWrapper>
-            <ContentTitle icon={<UserAddOutlined />} title={"SIGN UP"} />
+            <ContentTitle icon={<UserAddOutlined />} title={"РЕГИСТРИРАЈ СЕ"} />
             <Row gutter={32}>
                 <Col span={12}>
                     <Form onFinish={onClickSignIn}>
                         <Divider />
                         <FormInput
-                            title={"E-mail:"}
+                            title={"Е-мејл:"}
                             icon={<MailOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
@@ -60,7 +60,7 @@ const Registration: FC = (): ReactElement => {
                             placeholder={"E-mail"}
                         />
                         <FormInput
-                            title={"First name:"}
+                            title={"Име:"}
                             icon={<UserOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
@@ -69,7 +69,7 @@ const Registration: FC = (): ReactElement => {
                             placeholder={"First name"}
                         />
                         <FormInput
-                            title={"Last name:"}
+                            title={"Презиме:"}
                             icon={<UserOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
@@ -78,7 +78,7 @@ const Registration: FC = (): ReactElement => {
                             placeholder={"Last name"}
                         />
                         <FormInput
-                            title={"Password:"}
+                            title={"Лозинка:"}
                             icon={<LockOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
@@ -88,7 +88,7 @@ const Registration: FC = (): ReactElement => {
                             inputPassword
                         />
                         <FormInput
-                            title={"Confirm password:"}
+                            title={"Потврди лозинка:"}
                             icon={<LockOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
@@ -97,17 +97,7 @@ const Registration: FC = (): ReactElement => {
                             placeholder={"Confirm password"}
                             inputPassword
                         />
-                        <IconButton disabled={isLoading} title={"Sign up"} icon={<UserAddOutlined />} />
-                        <Form.Item
-                            help={errors.captchaError}
-                            validateStatus={errors.captchaError ? "error" : "validating"}
-                            style={{ marginTop: 16 }}
-                        >
-                            <ReCAPTCHA
-                                onChange={onChangeRecaptcha}
-                                sitekey="6Lc5cLkZAAAAAN8mFk85HQieB9toPcWFoW0RXCNR"
-                            />
-                        </Form.Item>
+                        <IconButton disabled={isLoading} title={"Регистрирај се"} icon={<UserAddOutlined />} />
                     </Form>
                 </Col>
             </Row>

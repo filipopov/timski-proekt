@@ -64,67 +64,67 @@ const Order: FC = (): ReactElement => {
     return (
         <ContentWrapper>
             <div style={{ textAlign: "center" }}>
-                <ContentTitle icon={<ShoppingOutlined />} title={"Ordering"} />
+                <ContentTitle icon={<ShoppingOutlined />} title={"Порачка"} />
             </div>
             <Form onFinish={onFormSubmit} form={form}>
                 <Row gutter={32}>
                     <Col span={12}>
                         <FormInput
-                            title={"Name:"}
+                            title={"Име:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"firstName"}
                             error={errors.firstNameError}
                             disabled={isOrderLoading}
-                            placeholder={"Enter the first name"}
+                            placeholder={"Име"}
                         />
                         <FormInput
-                            title={"Surname:"}
+                            title={"Презиме:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"lastName"}
                             error={errors.lastNameError}
                             disabled={isOrderLoading}
-                            placeholder={"Enter the last name"}
+                            placeholder={"Презиме"}
                         />
                         <FormInput
-                            title={"City:"}
+                            title={"Град:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"city"}
                             error={errors.cityError}
                             disabled={isOrderLoading}
-                            placeholder={"Enter the city"}
+                            placeholder={"Град"}
                         />
                         <FormInput
-                            title={"Address:"}
+                            title={"Адреса:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"address"}
                             error={errors.addressError}
                             disabled={isOrderLoading}
-                            placeholder={"Enter the address"}
+                            placeholder={"Адреса"}
                         />
                         <FormInput
-                            title={"Index:"}
+                            title={"Поштенски број:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"postIndex"}
                             error={errors.postIndexError}
                             disabled={isOrderLoading}
-                            placeholder={"Enter the index"}
+                            placeholder={"Поштенски број"}
                         />
                         <FormInput
-                            title={"Mobile:"}
+                            title={"Број:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"phoneNumber"}
                             error={errors.phoneNumberError}
                             disabled={isOrderLoading}
-                            placeholder={"(___)-___-____"}
+                            placeholder={"___-___-___"}
                         />
                         <FormInput
-                            title={"Email:"}
+                            title={"Е-мејл:"}
                             titleSpan={5}
                             wrapperSpan={19}
                             name={"email"}
@@ -145,7 +145,7 @@ const Order: FC = (): ReactElement => {
                         </Row>
                         <Row gutter={[32, 32]} style={{ marginTop: 16 }}>
                             <Col span={12}>
-                                <Typography.Title level={3}>To pay : $ {totalPrice}.00</Typography.Title>
+                                <Typography.Title level={3}>Вкупно: {totalPrice}.00 МКД</Typography.Title>
                             </Col>
                             <Col>
                                 <Button
@@ -155,7 +155,7 @@ const Order: FC = (): ReactElement => {
                                     size="large"
                                     icon={<CheckCircleOutlined />}
                                 >
-                                    Validate order
+                                    Потврди порачка
                                 </Button>
                             </Col>
                         </Row>

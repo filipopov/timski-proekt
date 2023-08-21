@@ -33,7 +33,7 @@ const UsersList: FC = (): ReactElement => {
 
     return (
         <div>
-            <ContentTitle title={"List of all users"} titleLevel={4} icon={<TeamOutlined />} />
+            <ContentTitle title={"Листа од сите корисници"} titleLevel={4} icon={<TeamOutlined />} />
             <Table
                 rowKey={"id"}
                 onChange={handleTableChange}
@@ -45,37 +45,37 @@ const UsersList: FC = (): ReactElement => {
                 dataSource={users}
                 columns={[
                     {
-                        title: "Id",
+                        title: "ИД",
                         dataIndex: "id",
                         key: "id"
                     },
                     {
-                        title: "First name",
+                        title: "Име",
                         dataIndex: "firstName",
                         key: "firstName"
                     },
                     {
-                        title: "E-mail",
+                        title: "E-мејл",
                         dataIndex: "email",
                         key: "email"
                     },
                     {
-                        title: "Role",
+                        title: "Улога",
                         dataIndex: "roles",
                         key: "roles",
                         render: (_, user: BaseUserResponse) => user.roles[0]
                     },
                     {
-                        title: "Provider",
+                        title: "Провајдер",
                         dataIndex: "provider",
                         key: "provider"
                     },
                     {
-                        title: "Action",
+                        title: "Акции",
                         dataIndex: "amount",
                         key: "amount",
                         render: (_, user: BaseUserResponse) => (
-                            <Link to={`${ACCOUNT_ADMIN_USERS}/${user.id}`}>Show more</Link>
+                            <Link to={`${ACCOUNT_ADMIN_USERS}/${user.id}`}>Прикажи повеќе</Link>
                         )
                     }
                 ]}

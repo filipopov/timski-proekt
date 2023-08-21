@@ -36,33 +36,33 @@ const ResetPassword: FC = (): ReactElement => {
 
     return (
         <ContentWrapper>
-            <ContentTitle icon={<SyncOutlined />} title={"RESET PASSWORD"} />
+            <ContentTitle icon={<SyncOutlined />} title={"РЕСЕТИРАЈ ЛОЗИНКА"} />
             <Row gutter={32}>
                 <Col span={12}>
                     <Form onFinish={onClickReset}>
                         <Divider />
                         {errorMessage && <Alert type="error" message={errorMessage} />}
                         <FormInput
-                            title={"Password:"}
+                            title={"Лозинка:"}
                             icon={<LockOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
                             error={passwordError}
                             name={"password"}
-                            placeholder={"Password"}
+                            placeholder={"Лозинка"}
                             inputPassword
                         />
                         <FormInput
-                            title={"Confirm password:"}
+                            title={"Потврди лозинка:"}
                             icon={<LockOutlined />}
                             titleSpan={8}
                             wrapperSpan={16}
                             error={password2Error}
                             name={"password2"}
-                            placeholder={"Confirm password"}
+                            placeholder={"Потврди лозинка"}
                             inputPassword
                         />
-                        <IconButton title={"Reset"} icon={<ReloadOutlined />} />
+                        <IconButton title={"Ресетирај"} icon={<ReloadOutlined />} />
                     </Form>
                 </Col>
             </Row>

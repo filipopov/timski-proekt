@@ -14,7 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -48,8 +47,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderResponse> postOrder(@Valid @RequestBody OrderRequest order, BindingResult bindingResult) {
-        return ResponseEntity.ok(orderMapper.postOrder(order, bindingResult));
+    public ResponseEntity<OrderResponse> postOrder(@Valid @RequestBody OrderRequest order) {
+        return ResponseEntity.ok(orderMapper.postOrder(order));
     }
 
     @PostMapping(GRAPHQL)

@@ -5,7 +5,7 @@ import Meta from "antd/lib/card/Meta";
 import { DeleteOutlined, EditOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
 import { PerfumeResponse } from "../../types/types";
-import { ACCOUNT_ADMIN_PERFUMES, PRODUCT } from "../../constants/routeConstants";
+import { ACCOUNT_ADMIN_PERFUMES, ACCOUNT_ADMIN_DELETE, PRODUCT } from "../../constants/routeConstants";
 import { useCart } from "../../hooks/useCart";
 import "./PerfumeCard.css";
 
@@ -35,7 +35,7 @@ const PerfumeCard: FC<PropsType> = ({ perfume, colSpan, edit, onOpenDelete }): R
                         edit
                             ? [
                                   <Link to={`${ACCOUNT_ADMIN_PERFUMES}/${perfume.id}`}>
-                                      <Button icon={<EditOutlined />}>Edit</Button>
+                                      <Button icon={<EditOutlined />}>Измени</Button>
                                   </Link>,
                                   <Button icon={<DeleteOutlined />} onClick={() => onOpenDelete!(perfume)} danger>
                                       Delete
@@ -43,17 +43,13 @@ const PerfumeCard: FC<PropsType> = ({ perfume, colSpan, edit, onOpenDelete }): R
                               ]
                             : [
                                   <Button icon={<ShoppingCartOutlined />} onClick={onClickAddToCart}>
-                                      Add to cart
+                                      Додади во кошничка
                                   </Button>
                               ]
                     }
                 >
-                    <div className={"perfume-card-rate"}>
-                        <Rate defaultValue={perfume.perfumeRating === 0 ? 5 : perfume.perfumeRating} disabled />
-                        <Typography.Text>{perfume.reviewsCount} reviews</Typography.Text>
-                    </div>
                     <Meta title={perfume.perfumeTitle} description={perfume.perfumer} style={{ textAlign: "center" }} />
-                    <Typography.Text className={"perfume-card-price"}>${perfume.price}.00</Typography.Text>
+                    <Typography.Text className={"perfume-card-price"}>{perfume.price}.00 MKD</Typography.Text>
                 </Card>
             </Link>
         </Col>

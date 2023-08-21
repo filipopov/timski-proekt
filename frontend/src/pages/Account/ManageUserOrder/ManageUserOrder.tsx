@@ -48,7 +48,7 @@ const ManageUserOrder: FC = (): ReactElement => {
             ) : (
                 <>
                     <div style={{ textAlign: "center" }}>
-                        <ContentTitle title={`Order #${id}`} titleLevel={4} icon={<ShoppingOutlined />} />
+                        <ContentTitle title={`Порачка #${id}`} titleLevel={4} icon={<ShoppingOutlined />} />
                     </div>
                     <Row>
                         <Col span={24}>
@@ -56,21 +56,21 @@ const ManageUserOrder: FC = (): ReactElement => {
                                 <Row gutter={32}>
                                     <Col span={12}>
                                         <InfoCircleOutlined className={"manage-user-icon"} />
-                                        <ContentTitle title={"Customer information"} titleLevel={5} />
-                                        <AccountDataItem title={"First name"} text={firstName} />
-                                        <AccountDataItem title={"Last name"} text={lastName} />
-                                        <AccountDataItem title={"City"} text={city} />
-                                        <AccountDataItem title={"Address"} text={address} />
-                                        <AccountDataItem title={"Email"} text={email} />
-                                        <AccountDataItem title={"Phone number"} text={phoneNumber} />
-                                        <AccountDataItem title={"Post index"} text={postIndex} />
+                                        <ContentTitle title={"Информации за клиент"} titleLevel={5} />
+                                        <AccountDataItem title={"Име"} text={firstName} />
+                                        <AccountDataItem title={"Презиме"} text={lastName} />
+                                        <AccountDataItem title={"Град"} text={city} />
+                                        <AccountDataItem title={"Адреса"} text={address} />
+                                        <AccountDataItem title={"Е-мејл"} text={email} />
+                                        <AccountDataItem title={"Број"} text={phoneNumber} />
+                                        <AccountDataItem title={"Поштенски број"} text={postIndex} />
                                     </Col>
                                     <Col span={12}>
                                         <InfoCircleOutlined className={"manage-user-icon"} />
-                                        <ContentTitle title={"Order information"} titleLevel={5} />
-                                        <AccountDataItem title={"Order id"} text={id} />
-                                        <AccountDataItem title={"Date"} text={date} />
-                                        <ContentTitle title={`Order summary: ${totalPrice}.0 $`} titleLevel={4} />
+                                        <ContentTitle title={"Информации за порачка"} titleLevel={5} />
+                                        <AccountDataItem title={"ИД порачка"} text={id} />
+                                        <AccountDataItem title={"Дата"} text={date} />
+                                        <ContentTitle title={`Сума: ${totalPrice}.0 МКД`} titleLevel={4} />
                                     </Col>
                                 </Row>
                                 <Row style={{ marginTop: 16 }}>
@@ -81,38 +81,38 @@ const ManageUserOrder: FC = (): ReactElement => {
                                             dataSource={orderItems}
                                             columns={[
                                                 {
-                                                    title: "Perfume Id",
+                                                    title: "ИД",
                                                     dataIndex: "id",
                                                     key: "id"
                                                 },
                                                 {
-                                                    title: "Perfume Brand",
+                                                    title: "Категорија",
                                                     dataIndex: "perfumer",
                                                     key: "perfumer",
                                                     render: (_, order: OrderItemResponse) => order.perfume.perfumer
                                                 },
                                                 {
-                                                    title: "Perfume Name",
+                                                    title: "Име",
                                                     dataIndex: "perfumeTitle",
                                                     key: "perfumeTitle",
                                                     render: (_, order: OrderItemResponse) => order.perfume.perfumeTitle
                                                 },
                                                 {
-                                                    title: "Quantity",
+                                                    title: "Количина",
                                                     dataIndex: "quantity",
                                                     key: "quantity"
                                                 },
                                                 {
-                                                    title: "Price",
+                                                    title: "Цена",
                                                     dataIndex: "price",
                                                     key: "price",
-                                                    render: (_, order: OrderItemResponse) => `${order.perfume.price}.0 $`
+                                                    render: (_, order: OrderItemResponse) => `${order.perfume.price}.0 МКД`
                                                 },
                                                 {
-                                                    title: "Amount",
+                                                    title: "Вкупно",
                                                     dataIndex: "amount",
                                                     key: "amount",
-                                                    render: (_, order: OrderItemResponse) => `${order.amount}.0 $`
+                                                    render: (_, order: OrderItemResponse) => `${order.amount}.0 МКД`
                                                 }
                                             ]}
                                         />

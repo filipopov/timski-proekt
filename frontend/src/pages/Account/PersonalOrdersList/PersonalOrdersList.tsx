@@ -30,11 +30,11 @@ const PersonalOrdersList: FC = (): ReactElement => {
                 <>
                     {orders.length === 0 ? (
                         <div style={{ textAlign: "center" }}>
-                            <ContentTitle title={"You have no orders"} titleLevel={4} icon={<ShoppingOutlined />} />
+                            <ContentTitle title={"Сеуште немате порачки"} titleLevel={4} icon={<ShoppingOutlined />} />
                         </div>
                     ) : (
                         <>
-                            <ContentTitle title={"List of all orders"} titleLevel={4} icon={<ShoppingOutlined />} />
+                            <ContentTitle title={"Листа од сите порачки"} titleLevel={4} icon={<ShoppingOutlined />} />
                             <OrdersTable loading={isOrdersLoading} orders={orders} fetchOrders={fetchUserOrders} />
                         </>
                     )}

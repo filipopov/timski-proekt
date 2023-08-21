@@ -49,26 +49,26 @@ const PersonalData: FC = (): ReactElement => {
             <ContentTitle title={"My Account"} titleLevel={4} icon={<ProfileOutlined />} />
             <Row>
                 <Col span={12}>
-                    <AccountDataItem title={"Email"} text={usersData?.email} />
-                    <AccountDataItem title={"First name"} text={usersData?.firstName} />
-                    <AccountDataItem title={"Last name"} text={usersData?.lastName} />
-                    <AccountDataItem title={"City"} text={usersData?.city} />
-                    <AccountDataItem title={"Address"} text={usersData?.address} />
-                    <AccountDataItem title={"Phone number"} text={usersData?.phoneNumber} />
-                    <AccountDataItem title={"Post index"} text={usersData?.postIndex} />
+                    <AccountDataItem title={"Е-мејл"} text={usersData?.email} />
+                    <AccountDataItem title={"Име"} text={usersData?.firstName} />
+                    <AccountDataItem title={"Презиме"} text={usersData?.lastName} />
+                    <AccountDataItem title={"Град"} text={usersData?.city} />
+                    <AccountDataItem title={"Адреса"} text={usersData?.address} />
+                    <AccountDataItem title={"Број"} text={usersData?.phoneNumber} />
+                    <AccountDataItem title={"Поштенски број"} text={usersData?.postIndex} />
                     <Button
                         type={"primary"}
                         onClick={onClickShowUserData}
                         icon={showUserData ? <EyeInvisibleOutlined /> : <EditOutlined />}
                     >
-                        {showUserData ? "Hide" : "Edit"}
+                        {showUserData ? "Сокриј" : "Измени"}
                     </Button>
                 </Col>
                 <Col span={12}>
                     {showUserData && (
                         <Form onFinish={onFormSubmit} form={form}>
                             <FormInput
-                                title={"First name:"}
+                                title={"Име:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"firstName"}
@@ -76,7 +76,7 @@ const PersonalData: FC = (): ReactElement => {
                                 placeholder={"First name"}
                             />
                             <FormInput
-                                title={"Last name:"}
+                                title={"Презиме:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"lastName"}
@@ -84,34 +84,34 @@ const PersonalData: FC = (): ReactElement => {
                                 placeholder={"Last name"}
                             />
                             <FormInput
-                                title={"City:"}
+                                title={"Град:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"city"}
                                 placeholder={"City"}
                             />
                             <FormInput
-                                title={"Address:"}
+                                title={"Адреса:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"address"}
                                 placeholder={"Address"}
                             />
                             <FormInput
-                                title={"Phone number:"}
+                                title={"Број:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"phoneNumber"}
                                 placeholder={"Phone number"}
                             />
                             <FormInput
-                                title={"Post index:"}
+                                title={"Поштенски број:"}
                                 titleSpan={6}
                                 wrapperSpan={18}
                                 name={"postIndex"}
                                 placeholder={"Post index"}
                             />
-                            <IconButton title={"Save"} icon={<CheckOutlined />} />
+                            <IconButton title={"Зачувај"} icon={<CheckOutlined />} />
                         </Form>
                     )}
                 </Col>

@@ -12,8 +12,6 @@ import { resetPerfumesState } from "../../redux-toolkit/perfumes/perfumes-slice"
 import MenuRadioSection from "./MenuSection/MenuRadioSection";
 import MenuSorter from "./MenuSorter/MenuSorter";
 import PerfumeCard from "../../components/PerfumeCard/PerfumeCard";
-import SelectSearchData from "../../components/SelectSearchData/SelectSearchData";
-import InputSearch from "../../components/InputSearch/InputSearch";
 import Spinner from "../../components/Spinner/Spinner";
 import { MAX_PAGE_VALUE, usePagination } from "../../hooks/usePagination";
 import { gender, perfumer, price } from "./MenuData";
@@ -40,31 +38,31 @@ const Menu: FC = (): ReactElement => {
     const { searchValue, searchTypeValue, resetFields, form, onSearch, handleChangeSelect } = useSearch();
 
     useEffect(() => {
-        const perfumeData = location.state.id;
+        // const perfumeData = location.state.id;
+        //
+        // if (perfumeData === "female" || perfumeData === "male") {
+        //     dispatch(
+        //         fetchPerfumesByFilterParams({
+        //             ...filterParams,
+        //             genders: [...filterParams.genders, perfumeData],
+        //             sortByPrice,
+        //             currentPage: 0
+        //         })
+        //     );
+        //     setFilterParams((prevState) => ({ ...prevState, genders: [...prevState.genders, perfumeData] }));
+        // } else if (perfumeData === "all") {
+        //     dispatch(fetchPerfumesByFilterParams({ ...filterParams, sortByPrice, currentPage: 0 }));
+        // }
+            dispatch(
+                fetchPerfumesByFilterParams({
+                    ...filterParams,
+                    perfumers: [...filterParams.perfumers],
+                    sortByPrice,
+                    currentPage: 0
+                })
+            );
+            setFilterParams((prevState) => ({ ...prevState, perfumers: [...prevState.perfumers] }));
 
-        if (perfumeData === "female" || perfumeData === "male") {
-            dispatch(
-                fetchPerfumesByFilterParams({
-                    ...filterParams,
-                    genders: [...filterParams.genders, perfumeData],
-                    sortByPrice,
-                    currentPage: 0
-                })
-            );
-            setFilterParams((prevState) => ({ ...prevState, genders: [...prevState.genders, perfumeData] }));
-        } else if (perfumeData === "all") {
-            dispatch(fetchPerfumesByFilterParams({ ...filterParams, sortByPrice, currentPage: 0 }));
-        } else {
-            dispatch(
-                fetchPerfumesByFilterParams({
-                    ...filterParams,
-                    perfumers: [...filterParams.perfumers, perfumeData],
-                    sortByPrice,
-                    currentPage: 0
-                })
-            );
-            setFilterParams((prevState) => ({ ...prevState, perfumers: [...prevState.perfumers, perfumeData] }));
-        }
         window.scrollTo(0, 0);
 
         return () => {
@@ -122,34 +120,19 @@ const Menu: FC = (): ReactElement => {
     return (
         <Layout>
             <Layout.Content className={"login-content"}>
-                <Typography.Title level={2}>Perfumes</Typography.Title>
+                <Typography.Title level={2}>Продукти</Typography.Title>
                 <Row gutter={32}>
                     <Col span={6}>
                         <MenuCheckboxSection
-                            title={"Brand"}
+                            title={"Категории"}
                             onChange={onChangeCheckbox}
                             data={perfumer}
                             category={CheckboxCategoryFilter.PERFUMERS}
                             selectedValues={filterParams.perfumers}
                         />
-                        <MenuCheckboxSection
-                            title={"Gender"}
-                            onChange={onChangeCheckbox}
-                            data={gender}
-                            category={CheckboxCategoryFilter.GENDERS}
-                            selectedValues={filterParams.genders}
-                        />
-                        <MenuRadioSection title={"Price"} onChange={onChangeRadio} data={price} />
+                        <MenuRadioSection title={"Цени"} onChange={onChangeRadio} data={price} />
                     </Col>
                     <Col span={18}>
-                        <Row>
-                            <Col span={9}>
-                                <SelectSearchData handleChangeSelect={handleChangeSelect} />
-                            </Col>
-                            <Col span={10}>
-                                <InputSearch onSearch={onSearch} form={form} />
-                            </Col>
-                        </Row>
                         <Row style={{ marginTop: 16, marginBottom: 16 }}>
                             <Col span={16}>
                                 <Pagination

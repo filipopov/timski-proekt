@@ -53,19 +53,19 @@ const Account: FC = (): ReactElement => {
         <ContentWrapper>
             <Row gutter={32}>
                 <Col span={5}>
-                    <ContentTitle title={"My Account"} titleLevel={4} icon={<UserOutlined />} />
-                    <AccountLink link={ACCOUNT_USER_INFO} title={"Personal data"} />
+                    <ContentTitle title={"Мој профил"} titleLevel={4} icon={<UserOutlined />} />
+                    <AccountLink link={ACCOUNT_USER_INFO} title={"Лични податоци"} />
                     {isAdmin ? (
                         <>
-                            <AccountLink link={ACCOUNT_ADMIN_ADD} title={"Add perfume"} />
-                            <AccountLink link={ACCOUNT_ADMIN_PERFUMES} title={"List of perfumes"} />
-                            <AccountLink link={ACCOUNT_ADMIN_ORDERS} title={"List of all orders"} />
-                            <AccountLink link={ACCOUNT_ADMIN_USERS} title={"List of all users"} />
+                            <AccountLink link={ACCOUNT_ADMIN_ADD} title={"Додати продукт"} />
+                            <AccountLink link={ACCOUNT_ADMIN_PERFUMES} title={"Листа од продукти"} />
+                            <AccountLink link={ACCOUNT_ADMIN_ORDERS} title={"Листа од порачки"} />
+                            <AccountLink link={ACCOUNT_ADMIN_USERS} title={"Листа од корисници"} />
                         </>
                     ) : (
                         <>
-                            <AccountLink link={ACCOUNT_USER_EDIT} title={"Change password"} />
-                            <AccountLink link={ACCOUNT_USER_ORDERS} title={"List of orders"} />
+                            <AccountLink link={ACCOUNT_USER_EDIT} title={"Промени лозинка"} />
+                            <AccountLink link={ACCOUNT_USER_ORDERS} title={"Листа од порачки"} />
                         </>
                     )}
                 </Col>

@@ -48,7 +48,7 @@ const CartItem: FC<PropsType> = ({
                         </Col>
                     </Row>
                     <Row style={{ marginTop: 16 }}>
-                        <Typography.Title level={4}>${perfume.price * perfumeCount}</Typography.Title>
+                        <Typography.Title level={4}>{perfume.price * perfumeCount} MКД</Typography.Title>
                     </Row>
                 </Col>
             </Row>

@@ -3,9 +3,7 @@ package com.gmail.merikbest2015.ecommerce.dto.order;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 import static com.gmail.merikbest2015.ecommerce.constants.ErrorMessage.*;
@@ -35,7 +33,7 @@ public class OrderRequest {
     @NotBlank(message = EMPTY_PHONE_NUMBER)
     private String phoneNumber;
 
-    @NotNull(message = EMPTY_POST_INDEX)
-    @Min(value = 5, message = "Post index must contain 5 digits")
+//    @NotNull(message = EMPTY_POST_INDEX)
+//    @Min(value = 5, message = "Post index must contain 5 digits")
     private Integer postIndex;
 }

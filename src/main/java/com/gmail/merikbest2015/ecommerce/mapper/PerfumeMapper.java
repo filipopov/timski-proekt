@@ -7,14 +7,12 @@ import com.gmail.merikbest2015.ecommerce.dto.perfume.PerfumeRequest;
 import com.gmail.merikbest2015.ecommerce.dto.perfume.PerfumeResponse;
 import com.gmail.merikbest2015.ecommerce.dto.perfume.PerfumeSearchRequest;
 import com.gmail.merikbest2015.ecommerce.enums.SearchPerfume;
-import com.gmail.merikbest2015.ecommerce.exception.InputFieldException;
 import com.gmail.merikbest2015.ecommerce.repository.projection.PerfumeProjection;
 import com.gmail.merikbest2015.ecommerce.service.PerfumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -57,10 +55,7 @@ public class PerfumeMapper {
         return commonMapper.getHeaderResponse(perfumes.getContent(), perfumes.getTotalPages(), perfumes.getTotalElements(), PerfumeResponse.class);
     }
 
-    public FullPerfumeResponse savePerfume(PerfumeRequest perfumeRequest, MultipartFile file, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            throw new InputFieldException(bindingResult);
-        }
+    public FullPerfumeResponse savePerfume(PerfumeRequest perfumeRequest, MultipartFile file) {
         Perfume perfume = commonMapper.convertToEntity(perfumeRequest, Perfume.class);
         return commonMapper.convertToResponse(perfumeService.savePerfume(perfume, file), FullPerfumeResponse.class);
     }

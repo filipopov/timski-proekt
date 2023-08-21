@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import static com.gmail.merikbest2015.ecommerce.constants.ErrorMessage.FILL_IN_THE_INPUT_FIELD;
 
@@ -22,37 +21,37 @@ public class PerfumeRequest {
     @Length(max = 255)
     private String perfumer;
 
-    @NotNull(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotNull(message = FILL_IN_THE_INPUT_FIELD)
     private Integer year;
 
-    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
     @Length(max = 255)
     private String country;
 
-    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
     @Length(max = 255)
     private String perfumeGender;
 
-    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
     @Length(max = 255)
     private String fragranceTopNotes;
 
-    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
     @Length(max = 255)
     private String fragranceMiddleNotes;
 
-    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
     @Length(max = 255)
     private String fragranceBaseNotes;
 
-    @NotNull(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotNull(message = FILL_IN_THE_INPUT_FIELD)
     private Integer price;
 
-    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
     @Length(max = 255)
     private String volume;
 
-    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
+//    @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
     @Length(max = 255)
     private String type;
 }

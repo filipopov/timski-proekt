@@ -43,8 +43,8 @@ const PerfumeList: FC = (): ReactElement => {
         if (isPerfumeDeleted) {
             window.scrollTo(0, 0);
             notification.success({
-                message: "Perfume deleted",
-                description: "Perfume successfully deleted!"
+                message: "Продуктот е избришан",
+                description: "Продуктот е успешно избришан!"
             });
         }
     }, [isPerfumeDeleted]);
@@ -75,17 +75,10 @@ const PerfumeList: FC = (): ReactElement => {
 
     return (
         <div>
-            <ContentTitle title={"List of perfumes"} titleLevel={4} icon={<UnorderedListOutlined />} />
+            <ContentTitle title={"Листа од продукти"} titleLevel={4} icon={<UnorderedListOutlined />} />
             <Row>
                 <Col span={24}>
-                    <Row>
-                        <Col span={9}>
-                            <SelectSearchData handleChangeSelect={handleChangeSelect} />
-                        </Col>
-                        <Col span={10}>
-                            <InputSearch onSearch={onSearch} />
-                        </Col>
-                    </Row>
+
                     {isPerfumesLoading ? (
                         <Spinner />
                     ) : (

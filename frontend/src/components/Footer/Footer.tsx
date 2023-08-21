@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from "react";
-import { FacebookOutlined, LinkedinOutlined, TwitterOutlined } from "@ant-design/icons";
+import {FacebookOutlined, InstagramOutlined, TwitterOutlined} from "@ant-design/icons";
 import { Col, Row, Typography } from "antd";
 
 import "./Footer.scss";
@@ -9,27 +9,21 @@ const Footer: FC = (): ReactElement => {
         <div className={"footer-wrapper"}>
             <Row >
                 <Col span={12}>
-                    <Typography.Title level={3}>Perfume</Typography.Title>
-                    <Typography.Text>(066) 696-66-23</Typography.Text>
-                    <Typography.Text className={"mt-12"}>from 08:00 to 20:00 without breaks and weekends</Typography.Text>
+                    <Typography.Title level={3}>Малешевски домашни производи</Typography.Title>
+                    <Typography.Text>078 123 456</Typography.Text>
+                    <Typography.Text className={"mt-12"}>Работно време од 08:00 до 20:00 часот.</Typography.Text>
                 </Col>
                 <Col span={12} >
                     <div className={"footer-wrapper-social"}>
-                        <Typography.Title level={3}>Social networks</Typography.Title>
-                        <a href="https://www.linkedin.com/in/merikbest/">
-                            <LinkedinOutlined />
-                        </a>
-                        <a href="#">
+                        <Typography.Title level={3}>Социјални медиуми</Typography.Title>
+                        <a href="https://www.facebook.com/malesevskiProizvodiOfficial">
                             <FacebookOutlined />
                         </a>
                         <a href="#">
-                            <TwitterOutlined />
+                            <InstagramOutlined />
                         </a>
                     </div>
                 </Col>
-            </Row>
-            <Row className={"footer-wrapper-copyright"}>
-                <Typography.Text>© Copy right merikbest</Typography.Text>
             </Row>
         </div>
     );

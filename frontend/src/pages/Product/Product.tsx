@@ -93,12 +93,7 @@ const Product: FC = (): ReactElement => {
                     ) : (
                         <>
                             <ProductInfo perfume={perfume} reviewsLength={reviews.length} addToCart={addToCart} />
-                            <ProductReviews
-                                reviews={reviews}
-                                reviewErrors={reviewErrors}
-                                addReview={addReview}
-                                form={form}
-                            />
+
                         </>
                     )}
                 </>

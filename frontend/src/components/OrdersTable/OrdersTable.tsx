@@ -31,35 +31,35 @@ const OrdersTable: FC<PropsType> = ({ orders, loading, fetchOrders }): ReactElem
             dataSource={orders}
             columns={[
                 {
-                    title: "Order №",
+                    title: "ИД",
                     dataIndex: "id",
                     key: "id"
                 },
                 {
-                    title: "Date",
+                    title: "Дата",
                     dataIndex: "date",
                     key: "date",
                     sorter: (a, b) => a.date.localeCompare(b.date)
                 },
                 {
-                    title: "Customer",
+                    title: "Клиент",
                     dataIndex: "firstName",
                     key: "firstName",
                     render: (_, order: OrderResponse) => `${order.firstName} ${order.lastName}`
                 },
                 {
-                    title: "Email",
+                    title: "Е-мејл",
                     dataIndex: "email",
                     key: "email"
                 },
                 {
-                    title: "Sum, $",
+                    title: "Сума, MKD",
                     dataIndex: "totalPrice",
                     key: "totalPrice",
                     sorter: (a, b) => a.totalPrice - b.totalPrice
                 },
                 {
-                    title: "Actions",
+                    title: "Акции",
                     dataIndex: "operations",
                     key: "operations",
                     render: (_, order: OrderResponse) => <Link to={`${ACCOUNT_USER_ORDERS}/${order.id}`}>Show more</Link>

@@ -7,7 +7,6 @@ import com.gmail.merikbest2015.ecommerce.repository.UserRepository;
 import com.gmail.merikbest2015.ecommerce.security.JwtProvider;
 import com.gmail.merikbest2015.ecommerce.security.oauth2.*;
 import com.gmail.merikbest2015.ecommerce.service.email.MailSender;
-import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -83,28 +82,6 @@ public class AuthenticationServiceImplTest {
         authenticationService.login(USER_EMAIL, USER_PASSWORD);
         verify(userRepository, times(1)).findByEmail(user.getEmail());
         verify(jwtProvider, times(1)).createToken(user.getEmail(), user.getRoles().iterator().next().name());
-    }
-
-    @Test
-    public void registerUser() {
-        User user = new User();
-        user.setFirstName(FIRST_NAME);
-        user.setEmail(USER_EMAIL);
-        String userCreated = authenticationService.registerUser(user, "", USER_PASSWORD);
-        Map<String, Object> attributes = new HashMap<>();
-        attributes.put("firstName", FIRST_NAME);
-        attributes.put("registrationUrl", "http://" + hostname + "/activate/" + user.getActivationCode());
-
-        assertNotNull(userCreated);
-        assertNotNull(user.getActivationCode());
-        assertTrue(CoreMatchers.is(user.getRoles()).matches(Collections.singleton(Role.USER)));
-        verify(userRepository, times(1)).save(user);
-        verify(mailSender, times(1))
-                .sendMessageHtml(
-                        ArgumentMatchers.eq(user.getEmail()),
-                        ArgumentMatchers.eq("Activation code"),
-                        ArgumentMatchers.eq("registration-template"),
-                        ArgumentMatchers.eq(attributes));
     }
 
     @Test

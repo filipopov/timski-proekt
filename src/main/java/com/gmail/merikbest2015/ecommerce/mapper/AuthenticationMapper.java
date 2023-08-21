@@ -33,12 +33,9 @@ public class AuthenticationMapper {
         return authenticationService.getEmailByPasswordResetCode(code);
     }
 
-    public String registerUser(String captcha, RegistrationRequest registrationRequest, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            throw new InputFieldException(bindingResult);
-        }
+    public String registerUser(RegistrationRequest registrationRequest) {
         User user = commonMapper.convertToEntity(registrationRequest, User.class);
-        return authenticationService.registerUser(user, captcha, registrationRequest.getPassword2());
+        return authenticationService.registerUser(user, registrationRequest.getPassword2());
     }
 
     public String activateUser(String code) {
