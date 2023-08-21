@@ -39,6 +39,11 @@ public class PerfumeServiceImpl implements PerfumeService {
     private String bucketName;
 
     @Override
+    public Perfume save(Perfume perfume) {
+        return perfumeRepository.save(perfume);
+    }
+
+    @Override
     public Perfume getPerfumeById(Long perfumeId) {
         return perfumeRepository.findById(perfumeId)
                 .orElseThrow(() -> new ApiRequestException(PERFUME_NOT_FOUND, HttpStatus.NOT_FOUND));

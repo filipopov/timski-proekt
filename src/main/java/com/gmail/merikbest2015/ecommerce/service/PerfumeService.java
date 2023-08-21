@@ -13,6 +13,8 @@ import java.util.List;
 
 public interface PerfumeService {
 
+    Perfume save(Perfume perfume);
+
     Perfume getPerfumeById(Long perfumeId);
 
     Page<PerfumeProjection> getAllPerfumes(Pageable pageable);

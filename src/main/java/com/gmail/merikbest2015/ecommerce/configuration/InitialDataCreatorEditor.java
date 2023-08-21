@@ -1,5 +1,6 @@
 package com.gmail.merikbest2015.ecommerce.configuration;
 
+import com.gmail.merikbest2015.ecommerce.domain.Perfume;
 import com.gmail.merikbest2015.ecommerce.repository.OrderItemRepository;
 import com.gmail.merikbest2015.ecommerce.service.OrderService;
 import com.gmail.merikbest2015.ecommerce.service.PerfumeService;
@@ -19,10 +20,15 @@ public class InitialDataCreatorEditor {
 
     @PostConstruct
     public void init() {
+        // 21 23
+        Perfume perfume = perfumeService.getPerfumeById(21L);
+        perfume.setFilename("https://www.mojazimnica.rs/wp-content/uploads/2020/10/sirup-od-malina.jpg.pagespeed.ce.pFIWEUwInJ.jpg");
+        perfumeService.save(perfume);
+
 //        perfumeService.savePerfume()
 //        orderItemRepository.deleteAll();
-//        perfumeService.deletePerfume(66L);
-//        perfumeService.deletePerfume(67L);
+//        perfumeService.deletePerfume(111L);
+//        perfumeService.deletePerfume(112L);
 //        perfumeService.deletePerfume(109L);
 //        perfumeService.deletePerfume(101L);
 //        perfumeService.deletePerfume(98L);
